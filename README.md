@@ -3,7 +3,7 @@
 ## Part 1: Refining Git History (10 challenges)
 
 ## 1. Missing File Fix:
-```
+```bash
 mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ touch test{1..4}.md
 
 mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git add test1.md && git commit -m "chore: Create initial file"
@@ -60,7 +60,7 @@ mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ g
 ```
 
 ## 2. Editing Commit History:
-```
+```bash
 mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git rebase -i HEAD~2
 Stopped at 8acc478...  chore: Create another file
 You can amend the commit now, with
@@ -82,7 +82,7 @@ Successfully rebased and updated refs/heads/main.
 ```
 
 ## 3. Keeping History Tidy - Squashing Commits:
-```
+```bash
 mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git rebase -i --root
 [detached HEAD 574d1ec] chore: Create initial file and second file chore: Create initial file
  Date: Fri Feb 28 19:38:27 2025 +0200
@@ -92,7 +92,7 @@ mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ g
 ```
 
 ## 4. Splitting a Commit
-```
+```bash
 mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git rebase -i 1d221fc
 The previous cherry-pick is now empty, possibly due to conflict resolution.
 If you wish to commit it anyway, use:
@@ -154,7 +154,7 @@ mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ g
 
 ## 5. Advanced Squashing:
 
-```
+```bash
 mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git rebase -i HEAD~3
 [detached HEAD 3c7cf26] chore: Create third and fourth files
  Date: Fri Feb 28 20:03:35 2025 +0200
@@ -166,7 +166,7 @@ Successfully rebased and updated refs/heads/main.
 
 ## 6. Dropping a commit
 
-```
+```bash
 mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ echo "Unwanted changes in an unwanted file" >> unwanted.txt
 
 mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git add unwanted.txt && git commit -m "Unwanted commit"
@@ -185,7 +185,7 @@ HEAD is now at 3c7cf26 chore: Create third and fourth files
 ```
 
 ## OR
-```
+```bash
 mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ echo "Unwanted changes in an unwanted file" >> unwanted.txt
 
 mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git add unwanted.txt && git commit -m "Unwanted commit"
@@ -203,7 +203,7 @@ mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ g
 
 ## 7. Reordering Commits:
 
-```
+```bash
 mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git log --oneline
 3c7cf26 (HEAD -> main) chore: Create third and fourth files
 8acc478 chore: Create another file
@@ -219,7 +219,7 @@ ebc9d75 chore: Create another file
 
 ## 8. Cherry-picking Commits:
 
-```
+```bash
 mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git checkout -b ft/branch
 Switched to a new branch 'ft/branch'
 
@@ -251,7 +251,7 @@ ebc9d75 chore: Create another file
 
 ## 9. Visualizing Commit History (Bonus):
 
-```
+```bash
 mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git log --graph
 * commit f7aa2d3a39d37fecbb9e3b637dc00f23b53ae78e (HEAD -> main)
 | Author: Mugara250 <mbonyumugara52@gmail.com>
@@ -274,7 +274,7 @@ mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ g
 
 ## 10. Understanding Reflogs (Bonus):
 
-```
+```bash
 mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git reflog
 f7aa2d3 (HEAD -> main) HEAD@{0}: commit: Cherry picked e8360aa commit from ft/branch
 97450dd HEAD@{1}: checkout: moving from ft/branch to main
@@ -294,3 +294,185 @@ eb40e59 HEAD@{10}: rebase (start): checkout eb40e59a484e0e59f98f9488d83220cc60d5
 e6f9abb HEAD@{15}: rebase (start): checkout e6f9abb1ba4bf9741e09d07636902edbdd0f2fab
 3c7cf26 HEAD@{16}: rebase (finish): returning to refs/heads/main
 ```
+
+## Part 2: Branching Basics (10 Challenges)
+
+## 1. Feature Branch Creation:
+```bash
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git checkout -b ft/new-feature
+Switched to a new branch 'ft/new-feature'
+```
+
+## 2. Working on the Feature Branch:
+```bash
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ echo "This is new content in the new feature.txt file on the new ft/new-feature branch" >> feature.txt
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git add feature.txt && git commit -m "Implemented core functionality for new feature"
+[ft/new-feature 84ba7d5] Implemented core functionality for new feature
+ 1 file changed, 1 insertion(+)
+ create mode 100644 feature.txt
+```
+
+## 3. Switching Back and Making More Changes
+```bash
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git checkout main 
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ echo "This is readme file containing all the details about the new project" >> readme.txt
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git add readme.txt && git commit -m "Updated project readme"
+[main 3a75c53] Updated project readme
+ 1 file changed, 1 insertion(+)
+ create mode 100644 readme.txt
+```
+
+## 4. Local vs Remote Branches:
+```bash
+git pull
+git push
+```
+
+## 5. Branch deletion
+```bash
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git merge ft/new-feature 
+Merge made by the 'ort' strategy.
+ feature.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 feature.txt
+ 
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ ls
+feature.txt  README.md  readme.txt  test1.md  test2.md  test3.md  test4.md  test5.md
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git branch -d ft/new-feature 
+Deleted branch ft/new-feature (was 84ba7d5).
+```
+
+## 6. Creating a Branch from a Commit:
+```bash
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git log --oneline
+cd269a8 (HEAD -> main) Merge branch 'ft/new-feature'
+3a75c53 Updated project readme
+84ba7d5 Implemented core functionality for new feature
+7152682 (origin/main) Git Advanced challenges: Part1
+f7aa2d3 Cherry picked e8360aa commit from ft/branch
+97450dd chore: Create initial file
+ebc9d75 chore: Create another file
+569c2ae chore: Create third and fourth files
+```
+
+## 7. Branch Merging
+```bash
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ echo "This is a branch created on the commit with commit has '84
+ba7d5'" >> file_new.txt
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git add file_new.txt && git commit -m "New file on a new branch created on commit '84ba7d5'"
+[ft/new-branch-from-commit d104965] New file on a new branch created on commit '84ba7d5'
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file_new.txt
+ 
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git checkout main
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 3 commits.
+  (use "git push" to publish your local commits)
+  
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git merge ft/new-branch-from-commit 
+Merge made by the 'ort' strategy.
+ file_new.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file_new.txt
+```
+
+## 8. Branch Rebasing
+```bash
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git checkout ft/new-branch-from-commit 
+Switched to branch 'ft/new-branch-from-commit'
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ ls
+feature.txt  file_new.txt  README.md  test1.md  test2.md  test3.md  test4.md  test5.md
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ echo "This is a branch created on the commit with commit has '84ba7d5'" >> file1.txt
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git add file1.txt 
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git commit -m "added another file on the ft/new-branch-from-commit"
+[ft/new-branch-from-commit 633ea7b] added another file on the ft/new-branch-from-commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file1.txt
+ 
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git rebase main
+Successfully rebased and updated refs/heads/ft/new-branch-from-commit.
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git checkout main 
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 5 commits.
+  (use "git push" to publish your local commits)
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git merge ft/new-branch-from-commit 
+Updating a041b83..c3ec4a8
+Fast-forward
+ file1.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 file1.txt
+ 
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ ls
+feature.txt  file1.txt  file_new.txt  README.md  readme.txt  test1.md  test2.md  test3.md  test4.md  test5.md
+```
+
+## 9. Renaming Branches
+```bash
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git branch -m ft/new-branch-from-commit ft/improved-branch-name
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git branch 
+  ft/branch
+  ft/improved-branch-name
+* main
+```
+
+## 10. Checking Out Detached HEAD
+```bash
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git log --oneline 
+c3ec4a8 (HEAD -> main, ft/improved-branch-name) added another file on the ft/new-branch-from-commit
+a041b83 Merge branch 'ft/new-branch-from-commit'
+d104965 New file on a new branch created on commit '84ba7d5'
+cd269a8 Merge branch 'ft/new-feature'
+3a75c53 Updated project readme
+84ba7d5 Implemented core functionality for new feature
+7152682 (origin/main) Git Advanced challenges: Part1
+f7aa2d3 Cherry picked e8360aa commit from ft/branch
+97450dd chore: Create initial file
+ebc9d75 chore: Create another file
+569c2ae chore: Create third and fourth files
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git checkout a041b83
+Note: switching to 'a041b83'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at a041b83 Merge branch 'ft/new-branch-from-commit'
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git log --oneline 
+a041b83 (HEAD) Merge branch 'ft/new-branch-from-commit'
+d104965 New file on a new branch created on commit '84ba7d5'
+cd269a8 Merge branch 'ft/new-feature'
+3a75c53 Updated project readme
+84ba7d5 Implemented core functionality for new feature
+7152682 (origin/main) Git Advanced challenges: Part1
+f7aa2d3 Cherry picked e8360aa commit from ft/branch
+97450dd chore: Create initial file
+ebc9d75 chore: Create another file
+569c2ae chore: Create third and fourth files
+``` 
