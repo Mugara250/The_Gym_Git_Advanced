@@ -1,1 +1,1 @@
-This is a branch created on the commit with commit has '84ba7d5'
+This is a branch created on the commit with commit has '84ba7d5'. These are new changes that will be stashed since I don't want to stage and commit them right now, however, I want also not lose them hence stashing them.
