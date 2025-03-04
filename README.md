@@ -475,4 +475,6 @@ f7aa2d3 Cherry picked e8360aa commit from ft/branch
 97450dd chore: Create initial file
 ebc9d75 chore: Create another file
 569c2ae chore: Create third and fourth files
-``` 
+```
+
+## Part 3: Advanced Workflows (10+ Challenges)
