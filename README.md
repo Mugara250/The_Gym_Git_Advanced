@@ -478,3 +478,209 @@ ebc9d75 chore: Create another file
 ```
 
 ## Part 3: Advanced Workflows (10+ Challenges)
+
+## 1. Stashing Changes:
+
+```bash
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ vi file1.txt 
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git stash
+Saved working directory and index state WIP on main: be8846d Advanced Git Challenges Part2
+```
+
+## 2. Retrieving Stashed Changes:
+
+```stash
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git stash pop
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   file1.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (781d16d57a0f4bbce7d4b84c700c684f8b608dfd)
+```
+
+## 3. Branch Merging Conflicts (Continued):
+
+```bash
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git branch
+  ft/improved-branch-name
+  ft/new-feature
+* main
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git checkout ft/new-feature 
+Switched to branch 'ft/new-feature'
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ ls
+test1.md  test2.md  test3.md  test4.md  test5.md
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ code test1.md 
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git add test1.md 
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git commit -m "New changes in test1.md file"
+[ft/new-feature 06b7c8c] New changes in test1.md file
+ 1 file changed, 1 insertion(+)
+ 
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git checkout main 
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+  
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ code test1.md 
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git add test1.md 
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git commit -m "New changes in test1.md file on main branch"
+[main 53f01c2] New changes in test1.md file on main branch
+ 1 file changed, 1 insertion(+)
+ 
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git merge ft/new-feature 
+Auto-merging test1.md
+CONFLICT (content): Merge conflict in test1.md
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+## 4. Resolving Merge Conflicts with a Merge Tool: 
+
+```bash
+git mergetool
+```
+
+## 5. Understanding Detached HEAD State:
+
+```bash
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git log --oneline 
+3f81fb6 (HEAD -> main) Merge branch 'ft/new-feature'
+53f01c2 New changes in test1.md file on main branch
+06b7c8c (ft/new-feature) New changes in test1.md file
+6f591ed add new content to file1.txt
+be8846d (origin/main) Advanced Git Challenges Part2
+c3ec4a8 (ft/improved-branch-name) added another file on the ft/new-branch-from-commit
+a041b83 Merge branch 'ft/new-branch-from-commit'
+d104965 New file on a new branch created on commit '84ba7d5'
+cd269a8 Merge branch 'ft/new-feature'
+3a75c53 Updated project readme
+84ba7d5 Implemented core functionality for new feature
+7152682 Git Advanced challenges: Part1
+f7aa2d3 Cherry picked e8360aa commit from ft/branch
+e8360aa Implemented test5
+97450dd chore: Create initial file
+ebc9d75 chore: Create another file
+569c2ae chore: Create third and fourth files
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git checkout c3ec4a8
+Note: switching to 'c3ec4a8'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at c3ec4a8 added another file on the ft/new-branch-from-commit
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git log --oneline 
+c3ec4a8 (HEAD, ft/improved-branch-name) added another file on the ft/new-branch-from-commit
+a041b83 Merge branch 'ft/new-branch-from-commit'
+d104965 New file on a new branch created on commit '84ba7d5'
+cd269a8 Merge branch 'ft/new-feature'
+3a75c53 Updated project readme
+84ba7d5 Implemented core functionality for new feature
+7152682 Git Advanced challenges: Part1
+f7aa2d3 Cherry picked e8360aa commit from ft/branch
+97450dd chore: Create initial file
+ebc9d75 chore: Create another file
+569c2ae chore: Create third and fourth files
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git checkout main 
+Previous HEAD position was c3ec4a8 added another file on the ft/new-branch-from-commit
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 5 commits.
+  (use "git push" to publish your local commits)
+```
+
+## 6. Ignoring Files/Directories:
+
+```bash
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ touch .gitignore
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git add .gitignore 
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git commit -m "add a file for files you don't want to track"
+[detached HEAD db1b212] add a file for files you don't want to track
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 .gitignore
+```
+```bash 
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ code .gitignore
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git add .gitignore 
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git commit -m "don't track all temporary
+ files and directories"
+[detached HEAD e6b2f06] don't all temporary files and directories
+ 1 file changed, 2 insertions(+)
+```
+
+## 7. Working with Tags:
+
+```bash
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git tag v1.0
+```
+
+## 8. Listing and Deleting Tags:
+
+```bash
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git tag
+v1.0
+
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git tag -d v1.0 
+Deleted tag 'v1.0' (was 34357db)
+```
+
+## 9. Pushing Local Work to Remote Repositories:
+
+```bash
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git push origin main
+Enumerating objects: 24, done.
+Counting objects: 100% (23/23), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (18/18), done.
+Writing objects: 100% (19/19), 1.94 KiB | 497.00 KiB/s, done.
+Total 19 (delta 8), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (8/8), completed with 1 local object.
+To https://github.com/Mugara250/The_Gym_Git_Advanced.git
+   be8846d..34357db  main -> main
+```
+
+## 10. Pulling Changes from Remote  Repositories:
+
+```bash
+mugara@mugara-Lenovo-Yoga-C940-14IIL:~/Gym_Git_Exercises/The_Gym_Git_Advanced$ git pull origin main
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 3 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 1.00 KiB | 102.00 KiB/s, done.
+From https://github.com/Mugara250/The_Gym_Git_Advanced
+ * branch            main       -> FETCH_HEAD
+   34357db..0cbf137  main       -> origin/main
+Updating 34357db..0cbf137
+Fast-forward
+ README.md | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+```
